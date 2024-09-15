@@ -1,0 +1,42 @@
+
+  
+  video {
+    
+    width: 100%;
+    height: auto;
+  }
+  .custom-controls {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 500;
+  }
+  .custom-controls button {
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .label {
+    position: relative;
+    bottom: 80px;
+    left: 20px;
+    color: #fff;
+    z-index: 1000;
+  }
+  
+  .label a{
+    text-decoration: none;
+  }
+
+  app-video-player {
+    margin-bottom: 0; /* Ensure there's no margin below the video player */
+  }

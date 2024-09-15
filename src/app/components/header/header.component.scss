@@ -1,0 +1,21 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo-link img{ 
+     width: 50px;
+     height: auto;
+     margin: 10px 30px 10px 0px;
+  }
+
+  mat-toolbar {
+   height: 80px;
+   position: fixed;
+   background-color: white;
+  }
+
+  span a {
+   text-decoration: none;
+   color: black;
+   margin: 0px 10px 30px 30px;
+  }
