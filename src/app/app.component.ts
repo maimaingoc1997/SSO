@@ -4,9 +4,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from "./components/footer/footer.component";
-import { HeaderComponent } from './components/header/header.component';
-import { VideoPlayerComponent } from "./components/video-player/video-player.component";
+import { VideoPlayerComponent } from "./features/video-player/video-player.component";
+import { FooterComponent } from "./shared/components/footer/footer.component";
+import { HeaderComponent } from './shared/components/header/header.component';
   @Component({
     selector: 'app-root',
     standalone: true,
