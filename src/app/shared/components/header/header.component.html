@@ -1,51 +1,62 @@
 <mat-toolbar>
-  <a mat-button href="#" aria-label="logo" class="logo-link">
-    <img src="H&M-Logo.png" alt="">
-  </a>
-  <div>
-    <button mat-icon-button aria-label="Example icon button with a menu icon">
-    <mat-icon>menu</mat-icon>
-    </button>
-    <span>
-      <a href="">WOMEN</a>
-      <a href="">MEN</a>
-      <a href="">KIDS</a>
-      <a href="">HOME</a>
-      <a href="">BEAUTY</a>
-    </span>
+  <div class="header-left">
+      <div>
+          <a mat-button href="#" aria-label="logo" class="logo-link">
+              <img src="H&M-Logo.png" alt>
+          </a>
+      </div>
+      <div class="nav-container">
+          <button mat-icon-button
+              aria-label="Example icon button with a menu icon">
+              <mat-icon>menu</mat-icon>
+          </button>
+          <div>
+              <nav aria-label="navigation links" class>
+                  <ul class="nav-ul">
+                      <li class><span><a class="page-link"
+                                  aria-current="page"
+                                  href="/en_us/women.html"><span
+                                      class="a9ebaf">Women</span></a></span></li>
+                      <li class><span><a class="page-link "
+                                  aria-current="page"
+                                  href="/en_us/men.html"><span
+                                      class>Men</span></a></span></li>
+                      <li class><span><a class="page-link "
+                                  aria-current="page"
+                                  href="/en_us/kids.html"><span
+                                      class>Kids</span></a></span></li>
+                      <li class><span><a class="page-link "
+                                  aria-current="page"
+                                  href="/en_us/home.html"><span
+                                      class>Home</span></a></span></li>
+                      <li class><span><a class="page-link "
+                                  aria-current="page"
+                                  href="/en_us/beauty.html"><span
+                                      class>Beauty</span></a></span></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
   </div>
-  
-  <span class="example-spacer container">
-    <!-- <div class="row">
-      <div class="col">
-        <a href="#">WOMEN</a>
-      </div>
-      <div class="col">
-        <a href="#">MEN</a>
-      </div>
-      <div class="col">
-        <a href="#">KIDS</a>
-      </div>
-      <div class="col">
-        <a href="#">HOME</a>
-      </div>
-      <div class="col">
-        <a href="#">BEAUTY</a>
-      </div>
-    </div> -->
 
-  </span>
-
-  <button mat-icon-button class="example-icon " aria-label="Example icon-button with heart icon">
-    <mat-icon>search</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon " aria-label="Example icon-button with heart icon">
-    <mat-icon>perm_identity</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon " aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite_border</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>redeem</mat-icon>
-  </button>
+  <div class="header-right">
+      <div class="icon-button-container">
+          <button mat-icon-button class="example-icon "
+              aria-label="Example icon-button with heart icon">
+              <mat-icon>search</mat-icon>
+          </button>
+          <button mat-icon-button class="example-icon "
+              aria-label="Example icon-button with heart icon">
+              <mat-icon>perm_identity</mat-icon>
+          </button>
+          <button mat-icon-button class="example-icon "
+              aria-label="Example icon-button with heart icon">
+              <mat-icon>favorite_border</mat-icon>
+          </button>
+          <button mat-icon-button class="example-icon"
+              aria-label="Example icon-button with share icon">
+              <mat-icon>redeem</mat-icon>
+          </button>
+      </div>
+  </div>
 </mat-toolbar>
