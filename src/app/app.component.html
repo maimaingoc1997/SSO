@@ -1,9 +1,10 @@
-
 <!-- main content area -->
 <main>
-    <app-header></app-header>
-    <app-teaser></app-teaser>
-    <app-product-list></app-product-list>
-    <app-footer></app-footer>
+        <app-header></app-header>
+        <router-outlet name="teaser"></router-outlet>
+        <router-outlet name="product-list"></router-outlet>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
 </main>
+
 <!-- end main content area -->
