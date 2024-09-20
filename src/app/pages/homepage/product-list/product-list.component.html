@@ -1,4 +1,4 @@
-<!-- <div class="product-container">
+<div class="product-container">
     <section class="product-section">
         <div class="product-header">
             <p class="shop-heading">
@@ -9,91 +9,13 @@
             </div>
         </div>
         <ul class="product-ul">
-            <li class="product-li">
+            <li *ngFor="let product of products" class="product-li">
                 <a href>
                     <img
-                        src="https://image.hm.com/assets/hm/6a/f6/6af630d18f6dfd5e48bfe1156e79d7b66ef475ab.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/f8/8f/f88f6b36bb40045d1747872cf05034c3df2cc755.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/f9/59/f95902df4b9d2359bbde4b2578915cd2392739e3.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/04/71/04710d18ac35d0956b668de2eb35fcf94ac615c6.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/12/3f/123f05e18749284ad6f7a50c52770423d52e5b2a.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/3e/a9/3ea9d7dae4a20aba1e2461009e5f6db6eb5af422.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/89/89/898957c113c17e4c81eb61a09c797f3bc237abe6.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/22/5f/225f98422e2b55e5894e3b84195c4e597098003f.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/a0/3f/a03fd1339a84839126b1a59ca775f9624830dc3a.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/72/65/72654f05052da13f21a8d8d735dba7efe53e05ed.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/ab/19/ab19d135cbcfd15a0ff7aeee61ebe130688a380b.jpg?imwidth=1536"
-                        alt>
-                </a>
-            </li>
-            <li class="product-li">
-                <a href>
-                    <img
-                        src="https://image.hm.com/assets/hm/c1/be/c1be09cb2e1a26c2991a566a2e7311f9fadc6d56.jpg?imwidth=1536"
-                        alt>
+                        src="{{product.image}}"
+                        alt="{{product.name}}">
                 </a>
             </li>
         </ul>
     </section>
-</div> -->
-<p>ProductList routing work!</p>
+</div>

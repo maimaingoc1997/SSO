@@ -1,19 +1,21 @@
-export class Product {
-    // Id: number;
-    // Name: string;
-    // Status: number;
-    // Description?: string;
-    // Quantity: number;
-    // Price: number;
-    // CateId: number;
-    // SizeId: number;
-    // Image?: string;
-    // Carts: Cart[] = [];
-    // Cate: Category;
-    // Size: Size;
+import { Cart } from "../cart/cart.model";
+import { Category } from "../category/category.model";
+import { Size } from "../size/size.model";
 
-    // constructor() {
-    //     this.Cate = {} as Category;
-    //     this.Size = {} as Size;
-    // }
+export interface Product {
+    id: number;
+    name: string;
+    status: number;
+    description?: string;
+    quantity: number;
+    price: number;
+    cateId: number;
+    sizeId: number;
+    image?: string;
+    carts: Cart[];
+    cate: Category;
+    size: Size;
+    
+
+   
 }
