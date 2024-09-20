@@ -9,6 +9,9 @@ import { FooterComponent } from "./shared/components/footer/footer.component";
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductListComponent } from "./pages/homepage/product-list/product-list.component";
 import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { BrowserModule } from '@angular/platform-browser';
   @Component({
     selector: 'app-root',
     standalone: true,
@@ -23,7 +26,7 @@ import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
     VideoPlayerComponent,
     MatGridListModule,
     ProductListComponent,
-    TeaserComponent
+    TeaserComponent,LoginComponent,RegisterComponent,
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

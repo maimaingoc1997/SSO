@@ -1,0 +1,44 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .register-section {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .register-section p {
+    margin-bottom: 10px;
+  }
+  
+  .register-section button {
+    background-color: #28a745;
+  }
+  
+  .register-section button:hover {
+    background-color: #218838;
+  }
+  

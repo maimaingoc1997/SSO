@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './pages/homepage/product-list/product-list.component';
 import { CategoryListComponent } from './pages/homepage/category-list/category-list/category-list.component';
 import { TeaserComponent } from './pages/homepage/teaser/teaser.component';
-import { LoginComponent } from './pages/homepage/login/login/login.component';
+
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 export const routes: Routes = [
     // {path:'', component:ProductListComponent, outlet: 'product-list'},
     // {path:'', component:TeaserComponent, outlet: 'teaser'},
@@ -16,6 +18,6 @@ export const routes: Routes = [
             { path: '', component: ProductListComponent, outlet: 'product-list' }
         ]
     },
-    {path:'login', component:LoginComponent}
-    
+    {path:'login', component:LoginComponent},
+    {path:'register', component:RegisterComponent},
 ];
