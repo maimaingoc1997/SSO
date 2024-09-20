@@ -1,53 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Category } from '../../../../shared/models/category/category.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { CategoryService } from '../../../../services/category.service';
+import { response } from 'express';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [MatIconModule,
+  imports: [
+    MatIconModule,
     MatButtonModule,
     CommonModule,
   ],
+
   templateUrl: './category-list.component.html',
-  styleUrl: './category-list.component.scss'
+  styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
-  categories: Category[] = [
-    {
-      id: 1,
-      name: 'Women',
-      description: "Clothes for women",
-      parentId: 0,
-      products: []
-    },
-    {
-      id: 2,
-      name: 'Men',
-      description: "Clothes for men",
-      parentId: 0,
-      products: []
-    },
-    {
-      id: 3,
-      name: 'Kids',
-      description: "Clothes for kids",
-      parentId: 0,
-      products: []
-    },
-    {
-      id: 4,
-      name: 'Home',
-      description: "Beauty",
-      parentId: 0,
-      products: []
-    },
-  ];
+  categories: Category[] = [];
+
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.categories.push()
+    this.categoryService.getAllCategories()
+      .subscribe({
+        next: (categories: Category[]) => {
+          this.categories = categories;
+          console.log(categories);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
   }
-
 }
+

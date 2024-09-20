@@ -7,8 +7,7 @@ import { CategoryListComponent } from './pages/homepage/category-list/category-l
 import { TeaserComponent } from './pages/homepage/teaser/teaser.component';
 import { LoginComponent } from './pages/homepage/login/login/login.component';
 export const routes: Routes = [
-    // {path:'', component:ProductListComponent, outlet: 'product-list'},
-    // {path:'', component:TeaserComponent, outlet: 'teaser'},
+
     {
         path: '',
         children: [
