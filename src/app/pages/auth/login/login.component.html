@@ -1,18 +1,22 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <form>
-      <label for="username">Username</label>
-      <input id="username" type="text" name="username" />
-  
-      <label for="password">Password</label>
-      <input id="password" type="password" name="password" />
-  
-      <button type="submit">Login</button>
-    </form>
-  
-    <div class="register-section">
-      <p>Chưa có tài khoản?</p>
-      <button (click)="goToRegister()">Đăng ký ngay</button>
-    </div>
+  <h2>Login</h2>
+  <form [formGroup]="formLogin" (ngSubmit)="loginUser()">
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" formControlName="email" />
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      name="password"
+      formControlName="password"
+    />
+
+    <button type="submit">Login</button>
+  </form>
+
+  <div class="register-section">
+    <p>Chưa có tài khoản?</p>
+    <button (click)="goToRegister()">Đăng ký ngay</button>
   </div>
-  
+</div>
