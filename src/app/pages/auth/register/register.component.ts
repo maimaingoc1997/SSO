@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Console, log } from 'console';
 import { response } from 'express';
 import { Router } from '@angular/router';
-
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class RegisterComponent {
   private baseApi = 'http://localhost:5243/api/';
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private auth: Auth) {}
   formRegister = new FormGroup({
     username: new FormControl(),
     email: new FormControl(),
@@ -49,6 +49,17 @@ export class RegisterComponent {
       }
     } else {
       console.warn('Password is null or confirm password not match');
+    }
+  }
+  async signUpWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(this.auth, provider);
+      const user = result.user;
+      console.log('Đăng ký thành công:', user);
+      // Thực hiện các hành động sau khi đăng ký thành công
+    } catch (error) {
+      console.error('Lỗi đăng ký:', error);
     }
   }
 }

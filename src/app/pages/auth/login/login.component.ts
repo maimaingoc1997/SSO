@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { RegisterComponent } from '../register/register.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
+import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -13,7 +13,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private auth: Auth) {}
   private baseApi = 'http://localhost:5243/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
@@ -37,5 +37,16 @@ export class LoginComponent {
   }
   goToRegister() {
     this.router.navigate(['/register']);
+  }
+  async loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(this.auth, provider);
+      // Nếu đăng nhập thành công, chuyển hướng về trang chủ hoặc trang bạn muốn
+      console.log('Login successful:', result.user);
+      this.router.navigate(['/']); // Điều hướng tới trang sau khi đăng nhập thành công
+    } catch (error) {
+      console.error('Login error: ', error);
+    }
   }
 }
