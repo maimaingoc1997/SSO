@@ -1,0 +1,19 @@
+<div class="nav-container">
+    <button mat-icon-button aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div>
+        <nav aria-label="navigation links" class>
+            <ul class="nav-ul">
+                <li *ngFor="let category of categories">
+                    <span>
+                      <a class="page-link" [routerLink]="[category.name]" aria-current="page">
+                        <span>{{category.name}}</span>
+                      </a>
+                    </span>
+                  </li>
+                  
+            </ul>
+        </nav>
+    </div>
+</div>
