@@ -21,6 +21,7 @@ export class CartComponent {
 
   ngOnInit(): void {
     this.loadCartItems();
+    window.scrollTo(0, 0);
   }
 
   loadCartItems() {

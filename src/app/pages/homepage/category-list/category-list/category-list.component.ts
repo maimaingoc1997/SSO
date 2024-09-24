@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../../../services/category.service';
 import { response } from 'express';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
     MatIconModule,
     MatButtonModule,
     CommonModule,
+    RouterModule,
   ],
 
   templateUrl: './category-list.component.html',
