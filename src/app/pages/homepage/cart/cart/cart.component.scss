@@ -10,7 +10,7 @@
 
 .cart-content {
     flex: 7; /* Takes 7 parts of the screen */
-    background-color: #f9f9f9;
+    background-color: none;
     padding: 20px;
     box-sizing: border-box;
     height: 100vh; /* Full screen height */
@@ -48,3 +48,37 @@ button:hover {
     background-color: #0056b3;
 }
     
+
+.cart-items{
+    display: flex;
+}
+
+.item-picture{
+    width: 150px;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    height: 30px;
+    border: 1px solid #ccc;
+}

@@ -1,16 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cart } from '../shared/models/cart/cart.model';
 import { Observable } from 'rxjs';
+import { Cart } from '../shared/models/cart/cart.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private baseApiUrl: string = "https://localhost:7135";
-  constructor(private http:HttpClient) { }
+  private baseApiUrl: string = "https://localhost:7135/api/Cart";
+  constructor(private http: HttpClient) { }
 
-  getAllCartItemsByUserId(): Observable<Cart[]>{
-    return this.http.get<Cart[]>(`${this.baseApiUrl}/api/Cart`);
+  getCartItems(userId: number): Observable<Cart[]> {
+    const headers = new HttpHeaders({
+      //'userId': userId.toString(),
+      'userId': '1'
+    });
+    return this.http.get<Cart[]>(this.baseApiUrl, { headers });
   }
 }
