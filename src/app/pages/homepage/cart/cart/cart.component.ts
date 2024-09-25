@@ -43,5 +43,41 @@ export class CartComponent {
     return this.cartItems.reduce((total, item) => total + item.productPrice * item.quantity, 0);
   }
 
-  
+  remove(item: any){
+    this.cartService.Remove(item, this.userId).subscribe({
+      next: (response) => {
+        console.log('Item removed', response); 
+        this.loadCartItems();
+      },
+      error: (err) => {
+        console.error("Failed to remove", err)
+      }
+    });
+  }
+  onQuantityChange(item: Cart) {
+    if (item.quantity < 1) {
+      const confirmation = confirm("Are you sure you want to remove this item from your cart?");
+      if (confirmation) {
+        this.remove(item);
+      } else {
+        item.quantity = 1;
+      }
+    }
+  };
+
+  incrementQuantity(item: Cart) {
+    item.quantity++;
+  }
+
+  decrementQuantity(item: Cart) {
+    if (item.quantity === 1) {
+      const confirmation = confirm("Are you sure you want to remove this item from your cart?");
+      if (confirmation) {
+        this.remove(item);
+      }
+    } else {
+      item.quantity--;
+    }
+  }
+
 }

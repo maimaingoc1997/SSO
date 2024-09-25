@@ -32,4 +32,13 @@ export class CartService {
   
     return this.http.post(`${this.baseApiUrl}/add`, item, { headers });
   }
+
+  Remove(item: any, userId: number){
+    const headers = new HttpHeaders({
+      'userId': userId.toString(),
+    });
+
+    return this.http.post(`${this.baseApiUrl}/remove`, item, { headers });
+  }
+  
 }

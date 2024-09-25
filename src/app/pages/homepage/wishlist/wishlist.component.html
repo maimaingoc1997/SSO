@@ -6,7 +6,6 @@
 </div>
 
 <div class="cart-body">
-    <div class="cart-items">
         <div *ngFor="let item of cartItems" class="cart-item">
             <img class="item-picture" [src]="item.image" alt="">
             <div class="item-heading">
@@ -15,8 +14,8 @@
             </div>
             <div class="btn-container">
                 <button class="btn" (click)="addToCart(item)">ADD TO CART</button>
+                <button class="btn" (click)="remove(item)">REMOVE</button>
             </div>
         </div>
-    </div>
 </div>
 <h2 *ngIf="cartItems.length === 0">YOUR FAVOURITE IS EMPTY!</h2>

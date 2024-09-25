@@ -17,9 +17,11 @@
           <p>{{ item.productPrice | currency }}</p>
         </div>
         <div class="cart-item-content">
-          <div>
-            <span>Quantity: </span>
-            <input type="number" [(ngModel)]="item.quantity" min="1">
+          <div class="quantity-change">
+            <button class="quantity-btn" (click)="decrementQuantity(item)">-</button>
+            
+            <input class="quantity-input" type="number" [(ngModel)]="item.quantity" (ngModelChange)="onQuantityChange(item)" />
+            <button class="quantity-btn" (click)="incrementQuantity(item)">+</button>
           </div>
           <div>
             <span>Total: </span><span>{{ item.productPrice * item.quantity | currency }}</span>

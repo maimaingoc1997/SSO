@@ -49,4 +49,16 @@ export class WishlistComponent {
       }
     });
 }
+
+remove(item: any){
+  this.cartService.Remove(item, this.userId).subscribe({
+    next: (response) => {
+      console.log('Item removed', response); 
+      this.loadWishListItems();
+    },
+    error: (err) => {
+      console.error("Failed to remove", err)
+    }
+  });
+}
 }
