@@ -6,6 +6,4 @@ export interface Category{
     description?: string;
     parentId: number;
     products: Product[];
-
-   
 }
