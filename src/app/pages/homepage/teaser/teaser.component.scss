@@ -1,0 +1,35 @@
+.banner-container{
+    display: flex;
+    margin-bottom: 100px;
+  }
+  .banner-section {
+    width: 50%; 
+  }
+  
+  .banner-picture img {
+    width: 100%;
+    height: auto;
+  }
+  .teaser-shop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    padding: 16px;
+    color: black;
+  }
+  .shop-heading{
+    text-align: center;
+    align-items: center;
+    margin: 0px;
+    font-weight: 200;
+    
+  }
+  .teaser-shop, a, span{
+    text-decoration: none;
+  }
+  
+  .shop-button{
+    font-weight: 500;
+    text-decoration: none;
+  }

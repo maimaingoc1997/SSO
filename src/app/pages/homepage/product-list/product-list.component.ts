@@ -10,7 +10,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   selector: 'app-product-list',
   standalone: true,
   imports: [CommonModule],
-  imports: [CommonModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })

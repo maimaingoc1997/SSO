@@ -1,0 +1,38 @@
+footer a {
+    text-decoration: none; /* Removes the underline from the links */
+    color: #000;
+    width: 100%;
+  }
+  
+footer .container{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+footer .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  footer .col-3 {
+    padding-left: 10px;
+    padding-right: 0;
+    text-align: left;
+  }
+ 
+  footer p, footer a {
+    margin: 0;
+    padding-left: 0; 
+    text-align: left;
+    display: block; 
+  }
+
+  
+  .logo-link img{ 
+    width: 60px;
+    height: auto;
+    margin: 50px 30px 10px 20px;
+    
+ }
+
+

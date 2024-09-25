@@ -1,7 +1,10 @@
 export interface Cart {
-    id: number; 
-    quantity: number; 
-    product_id: number; 
-    user_id: number; 
-    is_wishlist:number;
+    cartId: number;
+    productId: number;
+    productName: string;
+    productPrice: number;
+    image: string;
+    size: number;
+    quantity: number;
+    isWishlist: number;
 }

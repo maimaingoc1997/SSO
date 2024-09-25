@@ -1,0 +1,54 @@
+.video-container {
+  position: relative;
+  height: calc(100vh - 80px); /* Full viewport height minus header height */
+  overflow: hidden; /* Hide overflow to ensure no scrollbars */
+}
+  
+  video {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+  }
+  .custom-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 500;
+  }
+  .custom-controls button {
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .video-label{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 40px);
+  }
+  .video-label a{
+    text-decoration: none;
+  }
+  #video-label-btn{
+    font-size: 10px;
+    border: 5px;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+  }
+  app-video-player {
+    margin-bottom: 0; /* Ensure there's no margin below the video player */
+  }

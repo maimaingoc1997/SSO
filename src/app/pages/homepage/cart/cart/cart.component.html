@@ -1,0 +1,40 @@
+<div class="cart-header">
+    <h1>SHOPPING BAG</h1>
+  </div>
+  
+  <div class="cart-body">
+    <div class="cart-content">
+      <div *ngFor="let item of cartItems" class="cart-items">
+        <div class="cart-items-picture">
+          <img class="item-picture" [src]="item.image" alt="{{ item.productName }}">
+        </div>
+        <div class="cart-item-content">
+          <div class="cart-item-header">
+            <p>{{ item.productName }}</p>
+            <p>{{ item.productPrice | currency }}</p>
+          </div>
+          <div class="cart-item-content">
+            <div>
+              <span>Quantity: </span>
+              <input type="number" [(ngModel)]="item.quantity" min="1">
+            </div>
+            <div>
+              <span>Total: </span><span>{{ item.productPrice * item.quantity | currency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <h2 *ngIf="cartItems.length === 0">YOUR SHOPPING BAG IS EMPTY!</h2>
+    </div>
+  
+    <div class="checkout">
+      <div class="checkout-header">
+        <div>TOTAL:</div>
+        <div>{{ getTotalPrice() | currency }}</div>
+      </div>
+      <button>CONTINUE TO CHECKOUT</button>
+      <button>LOGIN</button>
+    </div>
+  </div>
+  
