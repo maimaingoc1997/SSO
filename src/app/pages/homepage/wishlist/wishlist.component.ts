@@ -37,4 +37,16 @@ export class WishlistComponent {
       }
     );
   }
+
+  addToCart(item: any){
+    this.cartService.addToCart(item, this.userId).subscribe({
+      next: (response) => {
+        console.log('Item added to cart', response); 
+        this.loadWishListItems();
+      },
+      error: (err) => {
+        console.error("Failed to add item to cart", err)
+      }
+    });
+}
 }

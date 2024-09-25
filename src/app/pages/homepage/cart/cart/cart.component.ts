@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../../services/cart.service';
 import { Cart } from '../../../../shared/models/cart/cart.model';
+import { Observable } from 'rxjs';
+import { response } from 'express';
+import { error } from 'console';
 
 @Component({
   selector: 'app-cart',
@@ -39,4 +42,6 @@ export class CartComponent {
   getTotalPrice(): number {
     return this.cartItems.reduce((total, item) => total + item.productPrice * item.quantity, 0);
   }
+
+  
 }

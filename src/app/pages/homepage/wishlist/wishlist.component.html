@@ -1,5 +1,8 @@
 <div class="cart-header">
     <h1>FAVOURITE</h1>
+    <div *ngIf="cartItems.length!=0">
+        {{cartItems.length}} {{cartItems.length > 1 ? 'ITEMS' : 'ITEM' }}
+      </div>
 </div>
 
 <div class="cart-body">
@@ -11,7 +14,7 @@
                 <p>{{ item.productPrice | currency }}</p>
             </div>
             <div class="btn-container">
-                <button class="btn">ADD TO CART</button>
+                <button class="btn" (click)="addToCart(item)">ADD TO CART</button>
             </div>
         </div>
     </div>
