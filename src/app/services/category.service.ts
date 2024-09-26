@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../shared/models/category/category.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' // This ensures the service is available app-wide
@@ -13,5 +13,13 @@ export class CategoryService {
 
   getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.baseApiUrl}/api/Categories`); // Use template literals for clarity
+  }
+
+  //shareService *not-clear yet!
+  private selectedCategorySource = new BehaviorSubject<number | null>(null);
+  selectedCategory$ = this.selectedCategorySource.asObservable();
+
+  selectCategory(categoryId: number) {
+    this.selectedCategorySource.next(categoryId);
   }
 }

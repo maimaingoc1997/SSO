@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '../shared/models/cart/cart.model';
 
 @Injectable({
@@ -23,4 +23,5 @@ export class CartService {
     });
     return this.http.get<Cart[]>(this.baseApiUrlWishList, { headers });
   }
+
 }

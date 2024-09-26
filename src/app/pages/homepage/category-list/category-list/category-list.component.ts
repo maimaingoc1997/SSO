@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, NgModule,ChangeDetectionStrategy,ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Category } from '../../../../shared/models/category/category.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,6 @@ import { MatTreeModule} from '@angular/material/tree';
 })
 export class CategoryListComponent implements OnInit {
   dataSource: Category[] = [];
-  expandedRootNodeId: number | null = null;
   
   childrenAccessor = (node: Category) => node.children || [];
 
@@ -47,27 +46,33 @@ export class CategoryListComponent implements OnInit {
       });
 
   }
+  
+
+  
+  onCategoryClick(categoryId: number): void {
+    this.categoryService.selectCategory(categoryId);  // Update the selected category
+  }
+  
 }
 
 function buildCategoryTree(categories: Category[]): Category[] {
-  const map: {[id:number]: Category} = {}; 
+  const map: { [id: number]: Category } = {};
   
   categories.forEach(category => {
-      map[category.id] = {...category, children: []};
-  }); 
+      map[category.id] = { ...category, children: [] };
+  });
   
-  const tree: Category[] = []; 
+  const tree: Category[] = [];
   categories.forEach(category => {
-      if(category.parentId === 0){
-  
-          tree.push(map[category.id]);
-      }else{
+      if (category.parentId === 0) {
+          tree.push(map[category.id]); // Add root categories
+      } else {
           const parent = map[category.parentId];
-          if(parent){
-              parent.children?.push(map[category.id]);
+          if (parent) {
+              parent.children?.push(map[category.id]); // Add child categories
           }
       }
-  }); 
+  });
   
-  return tree;
-  }
+  return tree; // Return the structured tree
+}
