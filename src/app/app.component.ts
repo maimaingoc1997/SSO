@@ -11,6 +11,7 @@ import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { FooterComponent } from './shared/components/footer/footer.component';
   @Component({
     selector: 'app-root',
     standalone: true,
@@ -27,6 +28,7 @@ import { BrowserModule } from '@angular/platform-browser';
     TeaserComponent,
     LoginComponent,
     RegisterComponent,
+    FooterComponent
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

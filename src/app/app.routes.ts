@@ -18,10 +18,12 @@ export const routes: Routes = [
     },
     { path: 'cart', component: CartComponent },
     { path: 'wishlist', component: WishlistComponent },
-    { 
-        path: 'search', 
-        component: SearchComponent 
+    {
+        path: 'search',
+        component: SearchComponent
     },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     {
         path: ':category',
         children: [
@@ -29,6 +31,6 @@ export const routes: Routes = [
             { path: '', component: ProductListComponent, outlet: 'product-list' }
         ]
     },
-    {path:'login', component:LoginComponent},
-    {path:'register', component:RegisterComponent},
+
+    
 ];

@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { RegisterComponent } from '../register/register.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { Auth, signInWithPopup,GoogleAuthProvider } from '@angular/fire/auth'; 
+
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -15,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private router: Router, private http: HttpClient, private auth: Auth) {}
+  constructor(private router: Router, private http: HttpClient, private auth: Auth) { }
   private baseApi = 'https://localhost:7135/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
