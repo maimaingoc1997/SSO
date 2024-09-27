@@ -7,6 +7,7 @@ import { CategoryListComponent } from "../../../pages/homepage/category-list/cat
 import { SearchComponent } from "../../../pages/search/search/search.component";
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -18,13 +19,15 @@ import { ProductService } from '../../../services/product.service';
     CategoryListComponent,
     RouterModule,
     SearchComponent,
-    FormsModule],
+    FormsModule,
+    MatSidenavModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   isSearchVisible: boolean = false;
   searchQuery: string = '';
+  showFiller = false;
   constructor(private productService: ProductService, private router: Router) { }
 
   toggleSearchBar() {

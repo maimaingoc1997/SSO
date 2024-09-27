@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductListComponent } from "./pages/homepage/product-list/product-list.component";
 import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
 import { FooterComponent } from './shared/components/footer/footer.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
   @Component({
     selector: 'app-root',
     standalone: true,
@@ -23,12 +24,14 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     MatGridListModule,
     ProductListComponent,
     TeaserComponent,
-    FooterComponent
+    FooterComponent,
+    MatSidenavModule
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
   })
   export class AppComponent {
+    showFiller = false;
     title = 'hmwebsite';
   };
 

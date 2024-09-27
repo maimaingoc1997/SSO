@@ -1,4 +1,4 @@
-<div class="nav-container">
+<!-- <div class="nav-container">
   <button mat-icon-button aria-label="Example icon button with a menu icon">
     <mat-icon>menu</mat-icon>
   </button>
@@ -6,23 +6,21 @@
   <div>
     <nav aria-label="navigation links">
       <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor" class="example-tree">
-        
-        <!-- Display nodes with children as expandable tree nodes -->
+
+      
         <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
           <div class="mat-tree-node">
-            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" >
-              <mat-icon>{{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}   </mat-icon>
+            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+              <mat-icon>{{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}} </mat-icon>
             </button>
             <span class="nav-link" [routerLink]="[node.name]" (click)="onCategoryClick(node.id)">{{ node.name }}</span>
           </div>
 
-          <!-- Child nodes appear below each expanded parent node -->
           <div class="child-nodes" [class.example-tree-invisible]="!tree.isExpanded(node)" role="group">
             <ng-container matTreeNodeOutlet></ng-container>
           </div>
         </mat-nested-tree-node>
 
-        <!-- Only display nodes that do not have children as simple tree nodes -->
         <mat-tree-node *matTreeNodeDef="let node; when: !hasChild">
           <div class="mat-tree-node">
             <span>{{ node.name }}</span>
@@ -31,4 +29,5 @@
       </mat-tree>
     </nav>
   </div>
-</div>
+</div> -->
+

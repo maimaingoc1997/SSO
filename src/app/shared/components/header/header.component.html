@@ -1,5 +1,6 @@
-<mat-toolbar>
-    <div class="header-left">
+<!-- <mat-toolbar>
+  <div class="header-left">
+
         <div>
             <a mat-button href="#" aria-label="logo" class="logo-link">
                 <img src="H&M-Logo.png" alt>
@@ -13,8 +14,6 @@
             <button mat-icon-button (click)="toggleSearchBar()" aria-label="Search icon-button">
                 <mat-icon>search</mat-icon>
             </button>
-            <!-- Search Bar -->
-            <!-- <input type="text" placeholder="Search..." class="search-bar" [class.visible]="isSearchVisible" /> -->
             <input [class.visible]="isSearchVisible" [(ngModel)]="searchQuery" (keydown.enter)="performSearch()" type="text"
                 placeholder="Search..." class="search-bar visible" />
 
@@ -31,4 +30,38 @@
             </button>
         </div>
     </div>
-</mat-toolbar>
+</mat-toolbar> -->
+
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-3">
+        <div class="logo-container">
+          <img src="H&M-Logo.png" alt="" class="logo">
+        </div>
+        <div class="col-md-9 col-sm-9 col-9 text-start ">
+          <div class="menu-icon">
+            <i class="bi bi-list"></i>
+          </div>
+          <div class="desktop_menu">
+            <ul>
+              <li>WOMEN</li>
+              <li>MEN</li>
+              <li>KIDS</li>
+              <li>HOME</li>
+            </ul>
+          </div>
+          <div class="">
+            <ul>
+              <li>WOMEN</li>
+              <li>MEN</li>
+              <li>KIDS</li>
+              <li>HOME</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
