@@ -1,16 +1,92 @@
 .nav-container {
-    display: flex;
-    align-items: center; /* Ensure items are aligned vertically */
-  }
-  
-  .nav-ul {
-    display: flex; /* Align items horizontally */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .nav-ul li {
-    margin: 5px;
-  }
-  
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* Ensure items are aligned vertically */
+}
+
+.nav-ul {
+  display: flex;
+  /* Align items horizontally */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+/*
+   * This padding sets alignment of the nested nodes.
+   */
+.example-tree .mat-nested-tree-node div[role=group] {
+  padding-left: 10px;
+}
+
+/*
+   * Padding for leaf nodes.
+   * Leaf nodes need to have padding so as to align with other non-leaf nodes
+   * under the same parent.
+   */
+.example-tree div[role=group]>.mat-tree-node {
+  padding-left: 0px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.example-tree {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Root nodes will wrap if needed */
+  gap: 20px; /* Space between root nodes */
+  width: 100%;
+  position: relative; /* Ensure root nodes don't move */
+  height: 60px;
+  background-color: white;
+}
+
+.mat-tree-node, .mat-nested-tree-node {
+  position: relative;
+  margin-bottom: 20px; /* Add space below root nodes */
+}
+
+.mat-tree-node {
+  padding: 8px;
+}
+
+.mat-nested-tree-node div[role=group] {
+  padding-left: 0px;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.child-nodes {
+  position: absolute; /* Child nodes are positioned absolutely below the root */
+  left: 0; /* Align child nodes with the root node */
+  top: 80%; /* Position child nodes directly below the root node */
+  z-index: 1; /* Ensure child nodes appear on top of other elements */
+  background-color: white; /* Add background to prevent overlapping issues */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for visibility */
+  margin: 0;
+  padding: 0;
+  align-items: baseline;
+}
+
+.nav-link{
+  cursor: pointer;
+}
