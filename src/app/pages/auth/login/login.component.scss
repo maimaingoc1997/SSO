@@ -41,4 +41,48 @@
   .register-section button:hover {
     background-color: #218838;
   }
+  .container {
+    height: 100vh;
+  }
   
+  .card {
+    border-radius: 10px;
+  }
+  .password-container {
+    position: relative;
+    width: 100%;
+    
+  }
+  
+  .input-group {
+    position: relative;
+    
+  }
+  
+  .form-control {
+    padding-right: 40px;
+    border-radius: 0px;  /* Tạo khoảng trống cho biểu tượng */
+  }
+  
+  .input-group-text {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+    
+  }
+  
+  .eye-icon {
+    font-size: 20px; /* Kích thước biểu tượng */
+    color: #000; /* Màu sắc của biểu tượng */
+    cursor: pointer;
+  }
+  .input-group-append {
+  display: flex;
+  align-items: right;
+}

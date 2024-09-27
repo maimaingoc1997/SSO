@@ -14,11 +14,12 @@ import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 })
 @Injectable()
 export class RegisterComponent {
-  private baseApi = 'http://localhost:5243/api/';
+  private baseApi = 'https://localhost:7135/api/';
   constructor(private http: HttpClient, private router: Router,private auth: Auth) {}
   formRegister = new FormGroup({
-    username: new FormControl(),
+    
     email: new FormControl(),
+    confirm_email : new FormControl(),
     password: new FormControl(),
     confirm_password: new FormControl(),
   });
@@ -29,9 +30,9 @@ export class RegisterComponent {
       formValue.password != null &&
       formValue.password == formValue.confirm_password
     ) {
-      if (formValue.username != null && formValue.email != null) {
+      if ( formValue.email != null&& formValue.email==formValue.confirm_email) {
         let response = this.http.post(
-          this.baseApi + 'Users/register',
+          this.baseApi + 'User/register',
           formValue,
           { responseType: 'text' }
         );
@@ -45,7 +46,7 @@ export class RegisterComponent {
           }
         );
       } else {
-        console.warn('Username is null or email is null');
+        console.warn('Email is null or confirm email not match');
       }
     } else {
       console.warn('Password is null or confirm password not match');

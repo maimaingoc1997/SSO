@@ -1,4 +1,4 @@
-<div class="register-container">
+<!-- <div class="register-container">
   <h2>Register</h2>
   <form [formGroup]="formRegister" (ngSubmit)="registerUser()">
     <label for="username">Username</label>
@@ -33,5 +33,58 @@
   <div class="signup-container">
     <h2>Đăng ký bằng Gmail</h2>
     <button class="google-signup-btn" (click)="signUpWithGoogle()">Đăng ký với Google</button>
+  </div>
+</div> -->
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="row shadow-lg p-5" style="width: 60rem;">
+
+    <!-- Left side: Form fields -->
+    <div class="col-md-6">
+      <h2 class="fw-bold mb-4">Sign Up</h2>
+      <p>Already have an account? <a href="#" class="text-primary">Log In</a></p>
+
+      <form [formGroup]="formRegister" (ngSubmit)="registerUser()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email"name="email"
+          formControlName="email">
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmEmail" class="form-label">Confirm email</label>
+          <input type="email" class="form-control" id="confirmEmail" placeholder="Confirm your email"name="confirm_email"
+          formControlName="confirm_email">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Choose a password</label>
+          <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password"
+          formControlName="password">
+          
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password"name="confirm-password"
+          formControlName="confirm_password">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Right side: Social login buttons -->
+    <div class="col-md-1 d-flex justify-content-center align-items-center">
+      <div class="vr"></div>
+    </div>
+    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
+      <button class="btn btn-light btn-block w-100 mb-3 border">
+        <i class="bi bi-google"></i> Continue with Google
+      </button>
+      <button class="btn btn-light btn-block w-100 mb-3 border">
+        <i class="bi bi-facebook"></i> Continue with Facebook
+      </button>
+    </div>
+
   </div>
 </div>
