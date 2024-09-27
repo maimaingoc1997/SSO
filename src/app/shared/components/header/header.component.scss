@@ -53,3 +53,15 @@ mat-toolbar {
 }
 .page-link{padding: 5px;}
 
+.search-bar {
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px light #ccc;
+
+  &.visible {
+    width: 200px; /* Set your desired width */
+    opacity: 1;
+  }
+}

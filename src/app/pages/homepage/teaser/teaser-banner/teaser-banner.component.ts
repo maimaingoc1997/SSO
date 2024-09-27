@@ -44,9 +44,6 @@ export class TeaserBannerComponent implements OnInit {
         this.pic_d = "https://image.hm.com/content/dam/global_campaigns/season_09/home/start-page-assets/w-30/livingroom-CE-w30-42.jpg?imwidth=1536";
         break;
       case 'beauty':
-
-
-
         break;
       default:
         this.pic_a = "https://image.hm.com/content/dam/global_campaigns/season_00/ladies/startpage-assets/wk37/12-sep/new-in-4x5-women-startpage-wk37.jpg?imwidth=1536";

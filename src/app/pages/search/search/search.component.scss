@@ -1,0 +1,40 @@
+.search-body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(1px, 1fr));
+    grid-gap: 0;
+    padding: 0;
+}
+
+.result-product {
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-picture {
+    width: 100%;
+    height: auto;
+}
+.item-heading{
+    padding: 10px;
+}
+.btn {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 0%;
+    background-color: white;
+
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+
+}
+
+.btn:hover {
+    background-color: #f0f0f0;
+    /* Optional hover effect */
+}

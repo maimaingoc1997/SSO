@@ -31,13 +31,9 @@ export class ProductListComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe({
       next: (categories: Category[]) => {
         this.categories = categories;
-
-        // If categories exist, select the first one by default
         if (this.categories.length > 0) {
           const firstCategoryId = this.categories[0].id;
           this.loadProductsByCategory(firstCategoryId);
-
-          // Optionally, set the first category as selected in the service
           this.categoryService.selectCategory(firstCategoryId);
         }
       },
@@ -45,9 +41,8 @@ export class ProductListComponent implements OnInit {
         console.log('Error fetching categories', error);
       }
     });
-    
     this.categorySubscription = this.categoryService.selectedCategory$.subscribe((categoryId) => {
-      console.log('Selected categoryId: ', categoryId); // Check if this prints the correct ID
+      console.log('Selected categoryId: ', categoryId); 
       if (categoryId) {
         this.loadProductsByCategory(categoryId);
       }
@@ -58,11 +53,16 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductsByCategory(categoryId)
       .subscribe({
         next: (products: Product[]) => {
-          this.products = products;
-          console.log(products);
+          if (products && products.length > 0) {
+            this.products = products;  
+          } else {
+            this.products = [];  
+            console.log(`No products found for category: ${categoryId}`);
+          }
         },
         error: (error: any) => {
           console.log(error);
+          this.products = []; 
         }
       });
   }
