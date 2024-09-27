@@ -4,6 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet, Route,RouterModule, RouterLink, Router } from '@angular/router';
 import { CategoryListComponent } from "../../../pages/homepage/category-list/category-list/category-list.component";
+import { SearchComponent } from "../../../pages/search/search/search.component";
+import { FormsModule } from '@angular/forms';
+import { ProductService } from '../../../services/product.service';
 import { LoginComponent } from '../../../pages/auth/login/login.component';
 @Component({
   selector: 'app-header',
@@ -12,14 +15,28 @@ import { LoginComponent } from '../../../pages/auth/login/login.component';
     RouterLink,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule, 
+    MatButtonModule,
     CategoryListComponent,
-    RouterModule],
+    RouterModule,
+    SearchComponent,
+    FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  isSearchVisible: boolean = false;
+  searchQuery: string = '';
+  constructor(private productService: ProductService, private router: Router) { }
+
+  toggleSearchBar() {
+    this.isSearchVisible = !this.isSearchVisible;
+  }
+
+  performSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['search'], { queryParams: { query: this.searchQuery } });
+    }
+  }
 
   goToLogin() {
     this.router.navigate(['/login']);

@@ -1,0 +1,25 @@
+<div class="search-container">
+    <div class="search-header">
+        <div>
+            <p>SEARCH RESULT</p>
+        </div>
+        <div>
+            <H1>{{searchQuery.toUpperCase()}}</H1>
+        </div>
+        <div *ngIf="searchResult.length == 0 ">
+            We couldn't find any result for "{{searchQuery}}"
+        </div>
+    </div>
+    <div class="search-body">
+        <div *ngFor="let product of searchResult" class="result-product">
+            <img class="item-picture" [src]="product.image" alt="">
+            <div class="item-heading">
+                <p>{{ product.name }}</p>
+                <p>{{ product.price| currency }}</p>
+            </div>
+            <div class="btn-container">
+                <button class="btn" (click)="addToCart(product)">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</div>

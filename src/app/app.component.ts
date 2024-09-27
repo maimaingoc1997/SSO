@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { VideoPlayerComponent } from "./pages/homepage/teaser/video-player/video-player.component";
-import { FooterComponent } from "./shared/components/footer/footer.component";
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductListComponent } from "./pages/homepage/product-list/product-list.component";
 import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
@@ -22,11 +21,12 @@ import { BrowserModule } from '@angular/platform-browser';
     MatIconModule,
     MatButtonModule,
     HeaderComponent,
-    FooterComponent,
     VideoPlayerComponent,
     MatGridListModule,
     ProductListComponent,
-    TeaserComponent,LoginComponent,RegisterComponent,
+    TeaserComponent,
+    LoginComponent,
+    RegisterComponent,
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

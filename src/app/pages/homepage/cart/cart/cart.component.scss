@@ -1,0 +1,117 @@
+.cart-header{
+    margin: 50px    20px;
+}
+
+.cart-body {
+    display: flex;
+    width: 100%;
+    align-items: flex-start; 
+}
+.quantity-change {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-content {
+    flex: 7; 
+    background-color: none;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh; 
+    overflow-y: auto; 
+}
+.cart-content::-webkit-scrollbar {
+    display: none; /* Hides scrollbar */
+}
+.checkout {
+    flex: 3; /* Takes 3 parts of the screen */
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start; /* Prevents it from stretching vertically */
+}
+
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    
+.quantity-btn{
+    width: 40px; /* Set a fixed width for buttons */
+    height: 40px; /* Set the same height for buttons to make them square */
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px; /* Center text vertically */
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 0;
+}
+.quantity-input {
+    width: 50px; /* Width of the input */
+    height: 40px; /* Same height as buttons */
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.cart-items{
+    display: flex;
+}
+
+.item-picture{
+    width: 150px;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.cart-item-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
