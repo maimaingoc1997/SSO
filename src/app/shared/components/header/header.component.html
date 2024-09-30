@@ -34,31 +34,57 @@
 
 
 <header>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-3 col-3">
-        <div class="logo-container">
-          <img src="H&M-Logo.png" alt="" class="logo">
+  <div class="container-fluid">
+    <div class="row header-content">
+      <div class="col container header-left">
+        <div class="container">
+          <div class="row">
+            <div class="col-1 logo-container">
+              <img src="H&M-Logo.png" alt="" class="logo">
+            </div>
+          
+              <app-category-list class="col"></app-category-list>
+            
+
+
+          </div>
         </div>
-        <div class="col-md-9 col-sm-9 col-9 text-start ">
-          <div class="menu-icon">
-            <i class="bi bi-list"></i>
-          </div>
-          <div class="desktop_menu">
-            <ul>
-              <li>WOMEN</li>
-              <li>MEN</li>
-              <li>KIDS</li>
-              <li>HOME</li>
-            </ul>
-          </div>
-          <div class="">
-            <ul>
-              <li>WOMEN</li>
-              <li>MEN</li>
-              <li>KIDS</li>
-              <li>HOME</li>
-            </ul>
+
+
+        <!-- <div class="off-screen-menu">
+          <button mat-icon-button (click)="toggleMenu()">
+            <mat-icon>close</mat-icon>
+          </button>
+
+          <ul>
+            <li>WOMEN</li>
+            <li>MEN</li>
+            <li>KIDS</li>
+          </ul>
+        </div>
+        <div class="menu-overlay" (click)="toggleMenu()"></div> -->
+      </div>
+
+
+      <div class="col container header-right">
+        <div class="header-right">
+          <div class="icon-button-container">
+            <button mat-icon-button (click)="toggleSearchBar()" aria-label="Search icon-button">
+              <mat-icon>search</mat-icon>
+            </button>
+            <input [class.visible]="isSearchVisible" [(ngModel)]="searchQuery" (keydown.enter)="performSearch()"
+              type="text" placeholder="Search..." class="search-bar visible" />
+            <button mat-icon-button class="example-icon " routerLink="login"
+              aria-label="Example icon-button with heart icon">
+              <mat-icon>perm_identity</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon " routerLink="wishlist"
+              aria-label="Example icon-button with heart icon">
+              <mat-icon>favorite_border</mat-icon>
+            </button>
+            <button mat-icon-button="example-icon" routerLink="cart" aria-label="Example icon-button with share icon">
+              <mat-icon>redeem</mat-icon>
+            </button>
           </div>
         </div>
       </div>

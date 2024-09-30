@@ -23,6 +23,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
+
   dataSource: Category[] = [];
   showFiller = false;
 
@@ -50,7 +51,15 @@ export class CategoryListComponent implements OnInit {
 
   }
 
-
+  toggleMenu() {
+    const offScreenMenu = document.querySelector('.off-screen-menu');
+    const overlay = document.querySelector('.menu-overlay');
+    console.log('Menu toggled');
+    if (offScreenMenu && overlay) {
+      offScreenMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+  }
 
   onCategoryClick(categoryId: number): void {
     this.categoryService.selectCategory(categoryId);  // Update the selected category

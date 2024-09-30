@@ -30,4 +30,49 @@
     </nav>
   </div>
 </div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <nav (click)="toggleMenu()" class="col-1 container ham-menu">
+      <div class="row"><span></span></div>
+      <div class="row"><span></span></div>
+    </nav>
+    <ul class="col screen-menu">
+      <li *ngFor="let category of dataSource" [routerLink]="[category.name]" (click)="onCategoryClick(category.id)">
+        {{category.name}}</li>
+    </ul>
+  </div>
 
+</div>
+
+
+
+<div class="off-screen-menu">
+  <div class="container-fluid">
+
+    <div class="row off-screen-menu-head">
+      <button mat-icon-button class="col-1" (click)="toggleMenu()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <div class="col container-fluid off-screen-menu-head-container">
+        <ul class="col screen-menu">
+          <li *ngFor="let category of dataSource" [routerLink]="[category.name]" (click)="onCategoryClick(category.id)">
+            {{category.name}}</li>
+        </ul>
+
+        <ul>
+          <li toggleChildMenu()>
+this part is for child category of root category
+
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="menu-overlay" (click)="toggleMenu()"></div>
