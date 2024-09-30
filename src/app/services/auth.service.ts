@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
 
   getUserInfo() {
     const token = localStorage.getItem('authToken');
@@ -25,5 +25,13 @@ export class UserService {
   getUserId(): string | null {
     const userInfo = this.getUserInfo();
     return userInfo ? userInfo.Id : null;
+  }
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
   }
 }

@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../../services/cart.service';
+import { UserService } from '../../../../services/user.service';
 import { Cart } from '../../../../shared/models/cart/cart.model';
-import { Observable } from 'rxjs';
-import { response } from 'express';
-import { error } from 'console';
-import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-cart',
@@ -20,18 +18,19 @@ import { Auth } from '@angular/fire/auth';
 export class CartComponent {
   cartItems: Cart[] = [];
 
-  constructor(private cartService: CartService, private auth: Auth) { }
+  constructor(private cartService: CartService, private auth: Auth, private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadCartItems();
     window.scrollTo(0, 0);
-  }
+  } 
 
   loadCartItems() {
-    const currentUser = this.auth.currentUser;
-    console.log(currentUser?.uid)
-    if (currentUser && currentUser.uid) {
-      this.cartService.getCartItems(currentUser.uid).subscribe(
+    const userId = this.userService.getUserId(); // Retrieve user ID from UserService
+    console.log('User ID:', userId);
+
+    if (userId) {
+      this.cartService.getCartItems(userId).subscribe(
         (items) => {
           this.cartItems = items;
           console.log('Cart Items:', this.cartItems);

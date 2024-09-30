@@ -1,11 +1,12 @@
-import { Component, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { RegisterComponent } from '../register/register.component';
+import { Component, Injectable } from '@angular/core';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Auth, signInWithPopup,GoogleAuthProvider } from '@angular/fire/auth'; 
+import { Router } from '@angular/router';
+import { RegisterComponent } from '../register/register.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,27 +17,36 @@ import { MatIconModule } from '@angular/material/icon';
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private router: Router, private http: HttpClient, private auth: Auth) { }
+  constructor(private router: Router, private http: HttpClient, private auth: Auth,private   userService: UserService) { }
   private baseApi = 'https://localhost:7135/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
     password: new FormControl(),
   });
   loginUser() {
-    let formValue = this.formLogin.value;
-    console.log(formValue)
-    let response = this.http.post(this.baseApi + 'User/login', formValue, {
-      responseType: 'json',
-    });
-    response.subscribe(
-      (response: any) => {
-        console.log('Response:', response); // Log the actual response
-        this.router.navigate(['']);
-      },
-      (error) => {
-        console.error('Error:', error); // Handle and log any error
-      }
-    );
+    const formValue = this.formLogin.value;
+    console.log(formValue);
+
+    // Call the login API
+    this.http.post(this.baseApi + 'User/login', formValue, { responseType: 'json' })
+      .subscribe(
+        (response: any) => {
+          console.log('Response:', response);
+
+          // Store the token in localStorage
+          localStorage.setItem('authToken', response.token);
+
+          // Retrieve user information from the token using UserService
+          const userInfo = this.userService.getUserInfo();
+          console.log('Logged in User Info:', userInfo);
+
+          // Redirect to home or another route
+          this.router.navigate(['']);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
   }
   goToRegister() {
     this.router.navigate(['/register']);
