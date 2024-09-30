@@ -15,7 +15,5 @@ export interface Product {
     carts: Cart[];
     cate: Category;
     size: Size;
-    
 
-   
 }

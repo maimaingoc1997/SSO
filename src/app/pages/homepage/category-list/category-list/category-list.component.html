@@ -1,4 +1,4 @@
-<div class="nav-container">
+<!-- <div class="nav-container">
   <button mat-icon-button aria-label="Example icon button with a menu icon">
     <mat-icon>menu</mat-icon>
   </button>
@@ -6,23 +6,21 @@
   <div>
     <nav aria-label="navigation links">
       <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor" class="example-tree">
-        
-        <!-- Display nodes with children as expandable tree nodes -->
+
+      
         <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
           <div class="mat-tree-node">
-            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" >
-              <mat-icon>{{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}   </mat-icon>
+            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+              <mat-icon>{{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}} </mat-icon>
             </button>
             <span class="nav-link" [routerLink]="[node.name]" (click)="onCategoryClick(node.id)">{{ node.name }}</span>
           </div>
 
-          <!-- Child nodes appear below each expanded parent node -->
           <div class="child-nodes" [class.example-tree-invisible]="!tree.isExpanded(node)" role="group">
             <ng-container matTreeNodeOutlet></ng-container>
           </div>
         </mat-nested-tree-node>
 
-        <!-- Only display nodes that do not have children as simple tree nodes -->
         <mat-tree-node *matTreeNodeDef="let node; when: !hasChild">
           <div class="mat-tree-node">
             <span>{{ node.name }}</span>
@@ -31,4 +29,49 @@
       </mat-tree>
     </nav>
   </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <nav (click)="toggleMenu()" class="col-1 container ham-menu">
+      <div class="row"><span></span></div>
+      <div class="row"><span></span></div>
+    </nav>
+    <ul class="col screen-menu">
+      <li *ngFor="let category of dataSource" [routerLink]="[category.name]" (click)="onCategoryClick(category)">
+        {{category.name}}</li>
+    </ul>
+  </div>
+
 </div>
+
+
+
+<div class="off-screen-menu">
+  <div class="container-fluid">
+    <div class="row off-screen-menu-head">
+      <button mat-icon-button class="col-1" (click)="toggleMenu()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <div class="col container-fluid off-screen-menu-head-container">
+        <!-- Root Categories -->
+        <ul class="col screen-menu">
+          <li *ngFor="let category of dataSource" [routerLink]="[category.name]" (click)="onCategoryClick(category)">
+            {{category.name}}</li>
+        </ul>
+
+      </div>
+
+      <div class="">All CATEGORIES FOR</div>
+      <div><h1>{{selectedCategory?.name?.toLocaleUpperCase()}}</h1></div>
+    </div>
+    <ul *ngIf="selectedCategory" class="menu-cate-list">
+      <li *ngFor="let child of selectedCategory.children" (click)="onCategoryClick(child)">
+        {{ child.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="menu-overlay" (click)="toggleMenu()"></div>

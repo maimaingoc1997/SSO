@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { VideoPlayerComponent } from "./pages/homepage/teaser/video-player/video-player.component";
-import { HeaderComponent } from './shared/components/header/header.component';
-import { ProductListComponent } from "./pages/homepage/product-list/product-list.component";
-import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { ProductListComponent } from "./pages/homepage/product-list/product-list.component";
+import { TeaserComponent } from "./pages/homepage/teaser/teaser.component";
+import { VideoPlayerComponent } from "./pages/homepage/teaser/video-player/video-player.component";
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
   @Component({
     selector: 'app-root',
     standalone: true,
@@ -28,12 +28,14 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     TeaserComponent,
     LoginComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    MatSidenavModule
 ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
   })
   export class AppComponent {
+    showFiller = false;
     title = 'hmwebsite';
   };
 
