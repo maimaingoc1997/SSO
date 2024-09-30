@@ -26,7 +26,7 @@ export class CategoryListComponent implements OnInit {
 
   dataSource: Category[] = [];
   showFiller = false;
-
+  selectedCategory: Category | null = null;
 
   childrenAccessor = (node: Category) => node.children || [];
 
@@ -40,16 +40,24 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.getAllCategories()
       .subscribe({
         next: (categories: Category[]) => {
-          this.dataSource = buildCategoryTree(categories)
-          console.log(this.dataSource);
+          this.dataSource = buildCategoryTree(categories);
+          
+          // Automatically select the first category and get its children
+          if (this.dataSource.length > 0) {
+            this.selectedCategory = this.dataSource[0];
+          }
+  
+          console.log('All categories loaded:', this.dataSource);
+          console.log('First category selected:', this.selectedCategory);
+          
           this.cdr.markForCheck();
         },
         error: (error: any) => {
-          console.error(error);
+          console.error('Error fetching categories', error);
         }
       });
-
   }
+  
 
   toggleMenu() {
     const offScreenMenu = document.querySelector('.off-screen-menu');
@@ -61,8 +69,16 @@ export class CategoryListComponent implements OnInit {
     }
   }
 
-  onCategoryClick(categoryId: number): void {
-    this.categoryService.selectCategory(categoryId);  // Update the selected category
+  onCategoryClick(category: Category): void {
+    if (this.hasChild(0, category)) {
+      // If the clicked category has children, set it as the selected category
+      this.selectedCategory = category;
+    } else {
+      this.selectedCategory = null;
+      // If it's a leaf category, trigger action (like selecting category)
+      // this.categoryService.selectCategory(category.id);
+       // Close the menu after selecting a leaf category
+    }
   }
 
 }

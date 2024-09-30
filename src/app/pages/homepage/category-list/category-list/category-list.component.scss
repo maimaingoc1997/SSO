@@ -149,10 +149,10 @@
   width: 100%;
   max-width: 500px;
   top: 0;
-  left: 0;
+  left: 
+  00px;
   position: fixed;
   top: 0;
-  left: 0px;
   display: flex;
   flex-direction: column;
   z-index: 999;
@@ -310,3 +310,7 @@ mat-nested-tree-node{
   justify-content: center;
 }
 
+.menu-cate-list li{
+text-decoration: none;
+list-style: none;
+}
