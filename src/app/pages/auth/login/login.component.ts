@@ -7,6 +7,7 @@ import { RegisterComponent } from '../register/register.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import { UserService } from '../../../services/user.service';
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private router: Router, private http: HttpClient, private auth: Auth,private   userService: UserService) { }
+  constructor(private router: Router, private http: HttpClient, private auth: Auth,private userService: UserService, private authService: AuthService) { }
   private baseApi = 'https://localhost:7135/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
@@ -26,28 +27,29 @@ export class LoginComponent {
   loginUser() {
     const formValue = this.formLogin.value;
     console.log(formValue);
-
+  
     // Call the login API
     this.http.post(this.baseApi + 'User/login', formValue, { responseType: 'json' })
       .subscribe(
         (response: any) => {
           console.log('Response:', response);
-
+  
           // Store the token in localStorage
-          localStorage.setItem('authToken', response.token);
-
+          localStorage.setItem('authToken', response.token);  // Ensure 'authToken' matches the key you're checking
+  
           // Retrieve user information from the token using UserService
-          const userInfo = this.userService.getUserInfo();
+          const userInfo = this.authService.getUserInfo();
           console.log('Logged in User Info:', userInfo);
-
+  
           // Redirect to home or another route
-          this.router.navigate(['']);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error('Error:', error);
         }
       );
   }
+  
   goToRegister() {
     this.router.navigate(['/register']);
   }

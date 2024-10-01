@@ -10,10 +10,8 @@
         </div>
         <ul class="product-ul">
             <li *ngFor="let product of products" class="product-li">
-                <a href>
-                    <img
-                        src="{{product.image}}"
-                        alt="{{product.name}}">
+                <a [routerLink]="['/product', product.id]">
+                    <img [src]="product.image" [alt]="product.name">
                 </a>
             </li>
         </ul>

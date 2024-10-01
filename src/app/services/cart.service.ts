@@ -12,7 +12,7 @@ export class CartService {
   private baseApiUrlWishList: string ="https://localhost:7135/api/Cart/user-wishlist";
   constructor(private http: HttpClient) { }
 
-  getCartItems(userId: string): Observable<Cart[]> {
+  getCartItems(userId: any): Observable<Cart[]> {
     const headers = new HttpHeaders({
       'userId': userId.toString(),
     });
@@ -25,7 +25,7 @@ export class CartService {
     return this.http.get<Cart[]>(this.baseApiUrlWishList, { headers });
   }
 
-  addToCart(item: any, userId: number) {
+  addToCart(item: any, userId: any) {
     const headers = new HttpHeaders({
       'userId': userId.toString(),
     });
@@ -33,7 +33,7 @@ export class CartService {
     return this.http.post(`${this.baseApiUrl}/add`, item, { headers });
   }
 
-  Remove(item: any, userId: string){
+  Remove(item: any, userId: any){
     const headers = new HttpHeaders({
       'userId': userId.toString(),
     });

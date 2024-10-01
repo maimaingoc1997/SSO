@@ -1,4 +1,5 @@
 .video-container {
+  top: 85px;
   position: relative;
   height: calc(100vh - 80px); /* Full viewport height minus header height */
   overflow: hidden; /* Hide overflow to ensure no scrollbars */

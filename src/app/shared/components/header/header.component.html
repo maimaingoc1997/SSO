@@ -33,7 +33,7 @@
 </mat-toolbar> -->
 
 
-<header>
+<header class="fixed-top bg-white h-80">
   <div class="container-fluid">
     <div class="row header-content">
       <div class="col container header-left">
@@ -42,9 +42,9 @@
             <div class="col-1 logo-container">
               <img routerLink="" src="H&M-Logo.png" alt="" class="logo">
             </div>
-          
-              <app-category-list class="col"></app-category-list>
-            
+
+            <app-category-list class="col"></app-category-list>
+
 
 
           </div>
@@ -74,17 +74,30 @@
             </button>
             <input [class.visible]="isSearchVisible" [(ngModel)]="searchQuery" (keydown.enter)="performSearch()"
               type="text" placeholder="Search..." class="search-bar visible" />
-            <button mat-icon-button class="example-icon " routerLink="login"
-              aria-label="Example icon-button with heart icon">
+
+
+            <!-- Show Login Button if the user is NOT logged in -->
+            <button mat-icon-button *ngIf="!authService.isLoggedIn()" class="example-icon" routerLink="login"
+              aria-label="Login button">
               <mat-icon>perm_identity</mat-icon>
             </button>
-            <button mat-icon-button class="example-icon " routerLink="wishlist"
+
+            <!-- Show Logout Button if the user IS logged in -->
+            <button mat-icon-button *ngIf="authService.isLoggedIn()" class="example-icon" (click)="logout()"
+              aria-label="Logout button">
+              <mat-icon>logout</mat-icon>
+            </button>
+
+
+            <button mat-icon-button class="example-icon " [routerLink]="['/wishlist']"
               aria-label="Example icon-button with heart icon">
               <mat-icon>favorite_border</mat-icon>
             </button>
-            <button mat-icon-button="example-icon" routerLink="cart" aria-label="Example icon-button with share icon">
+            <button mat-icon-button class="example-icon" [routerLink]="['/cart']" aria-label="Cart icon-button"
+              matBadge="{{ cartItemCount }}" matBadgePosition="above after" matBadgeColor="warn">
               <mat-icon>redeem</mat-icon>
             </button>
+
           </div>
         </div>
       </div>

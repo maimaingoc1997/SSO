@@ -1,9 +1,11 @@
 .login-container {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     width: 300px;
     margin: 0 auto;
     padding: 20px;
+    z-index: 1000px;
   }
   
   input {

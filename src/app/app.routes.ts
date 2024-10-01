@@ -4,20 +4,26 @@ import { ProductListComponent } from './pages/homepage/product-list/product-list
 import { TeaserComponent } from './pages/homepage/teaser/teaser.component';
 import { WishlistComponent } from './pages/homepage/wishlist/wishlist.component';
 import { SearchComponent } from './pages/search/search/search.component';
-
-
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { authGuard } from './shared/models/auth.guard';
+import { ProductDetailComponent } from './pages/product-details/product-detail/product-detail.component';
+
 export const routes: Routes = [
     {
         path: '',
         children: [
-            { path: '', component: TeaserComponent, outlet: 'teaser' },
             { path: '', component: ProductListComponent, outlet: 'product-list' },
+            { path: '', component: TeaserComponent, outlet: 'teaser' },
+
         ]
     },
-    { path: 'cart', component: CartComponent },
-    { path: 'wishlist', component: WishlistComponent },
+    {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [authGuard],
+    },
+    { path: 'wishlist', component: WishlistComponent, canActivate: [authGuard] },
     {
         path: 'search',
         component: SearchComponent
@@ -28,9 +34,8 @@ export const routes: Routes = [
         path: ':category',
         children: [
             { path: '', component: TeaserComponent, outlet: 'teaser' },
-            { path: '', component: ProductListComponent, outlet: 'product-list' }
+            { path: '', component: ProductListComponent, outlet: 'product-list' },
         ]
     },
-
-    
+    { path: 'product/:id', component: ProductDetailComponent }
 ];

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../../services/cart.service';
 import { UserService } from '../../../../services/user.service';
 import { Cart } from '../../../../shared/models/cart/cart.model';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,7 @@ import { Cart } from '../../../../shared/models/cart/cart.model';
 export class CartComponent {
   cartItems: Cart[] = [];
 
-  constructor(private cartService: CartService, private auth: Auth, private userService: UserService) { }
+  constructor(private cartService: CartService, private auth: Auth, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -26,7 +27,7 @@ export class CartComponent {
   } 
 
   loadCartItems() {
-    const userId = this.userService.getUserId(); // Retrieve user ID from UserService
+    const userId = this.authService.getUserId(); // Retrieve user ID from UserService
     console.log('User ID:', userId);
 
     if (userId) {
@@ -48,42 +49,42 @@ export class CartComponent {
     return this.cartItems.reduce((total, item) => total + item.productPrice * item.quantity, 0);
   }
 
-  // remove(item: any){
-  //   const currentUser = this.auth.currentUser;
-  //   this.cartService.Remove(item, this.userId).subscribe({
-  //     next: (response) => {
-  //       console.log('Item removed', response); 
-  //       this.loadCartItems();
-  //     },
-  //     error: (err) => {
-  //       console.error("Failed to remove", err)
-  //     }
-  //   });
-  // }
-  // onQuantityChange(item: Cart) {
-  //   if (item.quantity < 1) {
-  //     const confirmation = confirm("Are you sure you want to remove this item from your cart?");
-  //     if (confirmation) {
-  //       this.remove(item);
-  //     } else {
-  //       item.quantity = 1;
-  //     }
-  //   }
-  // };
+  remove(item: any){
+    const currentUserId = this.authService.getUserId();
+    this.cartService.Remove(item, currentUserId).subscribe({
+      next: (response) => {
+        console.log('Item removed', response); 
+        this.loadCartItems();
+      },
+      error: (err) => {
+        console.error("Failed to remove", err)
+      }
+    });
+  }
+  onQuantityChange(item: Cart) {
+    if (item.quantity < 1) {
+      const confirmation = confirm("Are you sure you want to remove this item from your cart?");
+      if (confirmation) {
+        this.remove(item);
+      } else {
+        item.quantity = 1;
+      }
+    }
+  };
 
-  // incrementQuantity(item: Cart) {
-  //   item.quantity++;
-  // }
+  incrementQuantity(item: Cart) {
+    item.quantity++;
+  }
 
-  // decrementQuantity(item: Cart) {
-  //   if (item.quantity === 1) {
-  //     const confirmation = confirm("Are you sure you want to remove this item from your cart?");
-  //     if (confirmation) {
-  //       this.remove(item);
-  //     }
-  //   } else {
-  //     item.quantity--;
-  //   }
-  // }
+  decrementQuantity(item: Cart) {
+    if (item.quantity === 1) {
+      const confirmation = confirm("Are you sure you want to remove this item from your cart?");
+      if (confirmation) {
+        this.remove(item);
+      }
+    } else {
+      item.quantity--;
+    }
+  }
 
 }

@@ -20,6 +20,7 @@ export class CategoryService {
   selectedCategory$ = this.selectedCategorySource.asObservable();
 
   selectCategory(categoryId: number) {
+    console.log('Selecting category ID:', categoryId);
     this.selectedCategorySource.next(categoryId);
   }
 }

@@ -41,15 +41,15 @@ export class CategoryListComponent implements OnInit {
       .subscribe({
         next: (categories: Category[]) => {
           this.dataSource = buildCategoryTree(categories);
-          
-          // Automatically select the first category and get its children
-          if (this.dataSource.length > 0) {
+  
+          // Only select the first category if no category is selected
+          if (!this.selectedCategory && this.dataSource.length > 0) {
             this.selectedCategory = this.dataSource[0];
+            this.categoryService.selectCategory(this.selectedCategory.id);  // Set first category as default
           }
   
           console.log('All categories loaded:', this.dataSource);
-          console.log('First category selected:', this.selectedCategory);
-          
+          console.log('Initially selected category:', this.selectedCategory);
           this.cdr.markForCheck();
         },
         error: (error: any) => {
@@ -58,6 +58,24 @@ export class CategoryListComponent implements OnInit {
       });
   }
   
+  onCategoryClick(category: Category): void {
+    // Check if the category has children
+    if (this.hasChild(0, category)) {
+      // Update only if a different category is selected
+      if (this.selectedCategory?.id !== category.id) {
+        this.selectedCategory = category;
+        this.categoryService.selectCategory(category.id);
+        console.log('Category with children selected:', this.selectedCategory);
+      }
+    } else {
+      // Handle leaf node (category without children)
+      if (this.selectedCategory?.id !== category.id) {
+        this.selectedCategory = category;
+        this.categoryService.selectCategory(category.id);
+        console.log('Leaf category selected:', this.selectedCategory);
+      }
+    }
+  }
 
   toggleMenu() {
     const offScreenMenu = document.querySelector('.off-screen-menu');
@@ -68,18 +86,7 @@ export class CategoryListComponent implements OnInit {
       overlay.classList.toggle('active');
     }
   }
-
-  onCategoryClick(category: Category): void {
-    if (this.hasChild(0, category)) {
-      // If the clicked category has children, set it as the selected category
-      this.selectedCategory = category;
-    } else {
-      this.selectedCategory = null;
-      // If it's a leaf category, trigger action (like selecting category)
-      // this.categoryService.selectCategory(category.id);
-       // Close the menu after selecting a leaf category
-    }
-  }
+  
 
 }
 
