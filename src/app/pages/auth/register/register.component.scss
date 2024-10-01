@@ -15,7 +15,7 @@
   
   button {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: rgb(4, 4, 105);
     color: white;
     border: none;
     cursor: pointer;
@@ -81,5 +81,32 @@
       background-color: #ddd;
       height: 100%;
     }
+  }
+  .custom-signup-btn {
+    background-color: white;   /* White background */
+    color: #007bff;           /* Blue text color */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 30px;       /* Rounded corners */
+    padding: 10px;            /* Smaller padding */
+    font-size: 0.875rem;      /* Smaller font size */
+  }
+
+  .custom-signup-btn:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    color: #0056b3;            /* Darker blue on hover */
+  }
+  .custom-input {
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid black; /* Bottom border */
+    border-radius: 0; /* No rounded corners */
+    padding: 10px 0;
+    margin-bottom: 50px; /* Vertical padding */
+    width: 100%; /* Set width to 100% of the container */
+    max-width: 500px;
+  }
+
+  .custom-input:focus {
+    outline: none; /* Remove default outline */
+    border-bottom: 2px solid #0056b3; /* Darker bottom border on focus */
   }
   
