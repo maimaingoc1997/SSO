@@ -12,7 +12,12 @@
                 <button (click)="addToCart(selectedProduct)">
                     ADD TO BAG
                 </button>
+
+               
             </div>
         </div>
     </div>
+    <div *ngIf="showNotification" class="notification">
+        {{selectedProduct?.name}} has been successfully added to your cart.
+      </div>
 </div>
