@@ -1,103 +1,84 @@
-<!-- <div class="register-container">
-  <h2>Register</h2>
-  <form [formGroup]="formRegister" (ngSubmit)="registerUser()">
-    <label for="username">Username</label>
-    <input
-      id="username"
-      type="text"
-      name="username"
-      formControlName="username"
-    />
-
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" formControlName="email" />
-
-    <label for="password">Password</label>
-    <input
-      id="password"
-      type="password"
-      name="password"
-      formControlName="password"
-    />
-
-    <label for="confirm-password">Confirm Password</label>
-    <input
-      id="confirm-password"
-      type="password"
-      name="confirm-password"
-      formControlName="confirm_password"
-    />
-
-    <button type="submit">Register</button>
-  </form>
-  <div class="signup-container">
-    <h2>Đăng ký bằng Gmail</h2>
-    <button class="google-signup-btn" (click)="signUpWithGoogle()">Đăng ký với Google</button>
-  </div>
-</div> -->
 <div class="container vh-100 d-flex justify-content-center align-items-center">
-  <div class="row shadow-lg p-5" style="width: 60rem;">
-
+  <div class="row shadow-lg p-5" style="width: 60rem">
+    <div>
+      <h2 class="fw-bold mb-4 text-center">Sign Up</h2>
+      <p class="text-center">
+        Already have an account?
+        <a (click)="goToLogin()" class="text-primary">Log In</a>
+      </p>
+    </div>
     <!-- Left side: Form fields -->
     <div class="col-md-6">
-      <h2 class="fw-bold mb-4">Sign Up</h2>
-      <p>Already have an account? <a href="#" class="text-primary">Log In</a></p>
-
       <form [formGroup]="formRegister" (ngSubmit)="registerUser()">
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email"name="email"
-          formControlName="email">
+          <input
+            type="email"
+            class="form-control custom-input"
+            id="email"
+            placeholder="Enter your email"
+            name="email"
+            formControlName="email"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="confirmEmail" class="form-label">Confirm email</label>
-          <input type="email" class="form-control" id="confirmEmail" placeholder="Confirm your email"name="confirm_email"
-          formControlName="confirm_email">
+          <input
+            type="email"
+            class="form-control custom-input"
+            id="confirmEmail"
+            placeholder="Confirm your email"
+            name="confirm_email"
+            formControlName="confirm_email"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="password" class="form-label">Choose a password</label>
-          <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password"
-          formControlName="password">
-          
+          <input
+            type="password"
+            class="form-control custom-input"
+            id="password"
+            placeholder="Choose a password"
+            name="password"
+            formControlName="password"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="confirmPassword" class="form-label">Confirm password</label>
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password"name="confirm-password"
-          formControlName="confirm_password">
+          <input
+            type="password"
+            class="form-control custom-input"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            name="confirm-password"
+            formControlName="confirm_password"
+          />
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        <button type="submit" class="btn custom-signup-btn w-50">
+          Sign Up
+        </button>
       </form>
     </div>
+    <!-- Middle Column for "or" -->
+    <div
+      class="col-md-1 d-flex flex-column justify-content-center align-items-center or-separator"
+    >
+      <div class="vr h-27" style="border-left: 1px solid #000"></div>
+      <span class="my-3" style="margin-right: 25px">or</span>
+      <div class="vr h-27" style="border-left: 1px solid #000"></div>
+    </div>
 
     <!-- Right side: Social login buttons -->
-    <div class="col-md-1 d-flex justify-content-center align-items-center">
-      <div class="vr"></div>
-    </div>
-    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
-      <button class="btn btn-light btn-block w-100 mb-3 border">
+
+    <div
+      class="col-md-5 d-flex flex-column justify-content-center align-items-center"
+    >
+      <button (click)="signUpWithGoogle()" class="btn btn-danger btn-block w-100 mb-3">
         <i class="bi bi-google"></i> Continue with Google
       </button>
-      <button class="btn btn-light btn-block w-100 mb-3 border">
+      <button class="btn btn-primary btn-block w-100 mb-3">
         <i class="bi bi-facebook"></i> Continue with Facebook
       </button>
     </div>
-    <!-- Right side: Social login buttons -->
-    <div class="col-md-1 d-flex justify-content-center align-items-center">
-      <div class="vr"></div>
-    </div>
-    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
-      <button class="btn btn-light btn-block w-100 mb-3 border">
-        <i class="bi bi-google"></i> Continue with Google
-      </button>
-      <button class="btn btn-light btn-block w-100 mb-3 border">
-        <i class="bi bi-facebook"></i> Continue with Facebook
-      </button>
-    </div>
-
-
   </div>
 </div>

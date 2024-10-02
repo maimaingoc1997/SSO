@@ -1,22 +1,25 @@
- 
-<div class="container login-container vh-100 d-flex justify-content-center align-items-center">
-  <div class="row" style="width: 60rem;">
-
+<div class="container  vh-100 d-flex justify-content-center align-items-center">
+  <div class="row" style="width: 40rem;">
+    
+      <h2 class="fw-bold mb-4  text-center margin-40">Login</h2>
+      
+    
     <!-- Left side: Social login buttons -->
     <div class="col-md-6 p-4 border-end d-flex flex-column justify-content-center">
       <div class="mb-3">
-     
-        <button class="btn btn-light btn-block w-100 mb-2 border">
-          <i class="bi bi-facebook"></i> Sign in with Facebook
+        <button class="btn shadow btn-light btn-primary w-100 mb-2 border">
+          <i class="bi bi-twitter"></i> Sign in with X Corp
         </button>
-        <button class="btn btn-light btn-block w-100 mb-2 border">
+        <button class="btn shadow-lg btn-primary btn-block w-100 mb-2">
+          <i class="bi bi-facebook "></i> Sign in with Facebook
+        </button>
+        <button class="btn shadow btn-danger btn-primary w-100 mb-2">
           <i class="bi bi-google"></i> Sign in with Google
         </button>
       </div>
 
       <div class="text-center mt-3">
-        <a (click)="goToRegister()"  class="text-decoration-none" style="color: red;">Sign up</a>
-       
+        <a (click)="goToRegister()" class="text-decoration-underline" style="color: red;">Sign up</a>
       </div>
     </div>
 
@@ -31,19 +34,20 @@
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <div class="input-group">
-            <input type="password" class="form-control" id="password"  name="password" formControlName="password" placeholder="Enter your password">
-           
+            <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Enter your password">
             <div class="input-group-append">
-              <span class="input-group-text"><mat-icon class="eye-icon" >remove_red_eye</mat-icon></span>
+              <span class="input-group-text" (click)="togglePasswordVisibility()">
+                <mat-icon class="eye-icon">{{ passwordVisible ? 'visibility_off' : 'remove_red_eye' }}</mat-icon>
+              </span>
             </div>
-            </div>
+          </div>
         </div>
 
-        <div class="mb-3 text-end">
-          <a href="#" class="text-decoration-none">Forgot password?</a>
+        <div class="mb-3 text-top">
+          <a href="#" class="text-decoration-underline">Forgot password?</a>
         </div>
 
-        <button  class="btn btn-primary w-100">Sign in</button>
+        <button class="btn btn-primary-1 w-100">Sign in</button>
       </form>
     </div>
   </div>
