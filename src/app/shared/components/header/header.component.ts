@@ -62,6 +62,7 @@ export class HeaderComponent {
   }
   logout() {
     this.authService.logout();
+    this.cartService.updateCartItemCount(0);
     this.router.navigate(['/']);
   }
   toggleMenu() {

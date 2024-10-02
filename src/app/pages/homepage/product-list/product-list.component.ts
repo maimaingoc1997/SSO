@@ -43,11 +43,19 @@ export class ProductListComponent implements OnInit {
         next: (categories: Category[]) => {
           this.categories = categories;
           
-          // Only select the first category if nothing is selected yet
-          if (this.categories.length > 0 && !this.selectedCategory) {
-            const firstCategoryId = this.categories[0].id;
-            this.loadProductsByCategory(firstCategoryId);
-            this.categoryService.selectCategory(firstCategoryId); // Select first category only on initialization
+          // If there are categories, load the selected or default category
+          if (this.categories.length > 0) {
+            // Check if a category was previously selected
+            const selectedCategoryId = this.categoryService.getSelectedCategoryId();
+            
+            // Load products for the selected category or default to the first one
+            if (selectedCategoryId) {
+              this.loadProductsByCategory(selectedCategoryId);
+            } else {
+              const firstCategoryId = this.categories[0].id;
+              this.loadProductsByCategory(firstCategoryId);
+              this.categoryService.selectCategory(firstCategoryId); // Select the first category
+            }
           }
         },
         error: (error: any) => {
@@ -55,7 +63,7 @@ export class ProductListComponent implements OnInit {
         }
       });
     
-      // Listen to changes in the selected category
+      // Listen for changes in the selected category
       this.categorySubscription = this.categoryService.selectedCategory$.subscribe((categoryId) => {
         console.log('Selected categoryId in ProductListComponent: ', categoryId);
         if (categoryId) {
@@ -65,9 +73,10 @@ export class ProductListComponent implements OnInit {
     }
     
     
+    
     loadProductsByCategory(categoryId: number): void {
       console.log(`Loading products for category ID: ${categoryId}`); // Debugging
-      this.productService.getActiveProductsByCategory(categoryId)
+      this.productService.getProductsByCategory(categoryId)
         .subscribe({
           next: (products: Product[]) => {
             console.log(`Products loaded for category ID: ${categoryId}`, products); // Debugging

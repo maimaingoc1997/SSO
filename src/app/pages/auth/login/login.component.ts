@@ -8,6 +8,7 @@ import { RegisterComponent } from '../register/register.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private router: Router, private http: HttpClient, private auth: Auth,private userService: UserService, private authService: AuthService) { }
+  constructor(private router: Router, private http: HttpClient, private auth: Auth,private cartService: CartService, private authService: AuthService) { }
   private baseApi = 'https://localhost:7135/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
@@ -40,7 +41,12 @@ export class LoginComponent {
           // Retrieve user information from the token using UserService
           const userInfo = this.authService.getUserInfo();
           console.log('Logged in User Info:', userInfo);
-  
+
+          if (userInfo) {
+            this.cartService.getCartItems(userInfo.Id).subscribe((items) => {
+              this.cartService.updateCartItemCount(items.length); // Update the count immediately
+            });
+          }
           // Redirect to home or another route
           this.router.navigate(['/']);
         },
