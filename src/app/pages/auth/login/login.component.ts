@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterComponent } from '../register/register.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
