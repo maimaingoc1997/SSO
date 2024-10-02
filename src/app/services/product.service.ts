@@ -28,4 +28,11 @@ export class ProductService {
   getProductById(id: any): Observable<Product> {
     return this.http.get<Product>(`${this.baseApiUrl}/api/Product/${id}`);
   }
+
+  getActiveProductsByCategory(categoryId: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseApiUrl}/api/Product/Acategories/${categoryId}`);
+  }
+  getDeActiveProductsByCategory(categoryId: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseApiUrl}/api/Product/DEcategories/${categoryId}`);
+  }
 }

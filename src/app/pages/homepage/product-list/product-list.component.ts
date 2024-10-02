@@ -67,7 +67,7 @@ export class ProductListComponent implements OnInit {
     
     loadProductsByCategory(categoryId: number): void {
       console.log(`Loading products for category ID: ${categoryId}`); // Debugging
-      this.productService.getProductsByCategory(categoryId)
+      this.productService.getActiveProductsByCategory(categoryId)
         .subscribe({
           next: (products: Product[]) => {
             console.log(`Products loaded for category ID: ${categoryId}`, products); // Debugging
