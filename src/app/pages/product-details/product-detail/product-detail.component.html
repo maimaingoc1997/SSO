@@ -6,13 +6,18 @@
         <div class="col-6 B-section">
             <div class="B-section-content">
                 <H1>{{selectedProduct?.name}}</H1>
-                <p>{{selectedProduct?.price}}</p>
+                <p>{{selectedProduct?.price | currency }}</p>
                 <div class="product-des">{{selectedProduct?.description}}</div>
                 <div class="spacer"></div>
                 <button (click)="addToCart(selectedProduct)">
                     ADD TO BAG
                 </button>
+
+               
             </div>
         </div>
     </div>
+    <div *ngIf="showNotification" class="notification">
+        {{selectedProduct?.name}} has been successfully added to your cart.
+      </div>
 </div>

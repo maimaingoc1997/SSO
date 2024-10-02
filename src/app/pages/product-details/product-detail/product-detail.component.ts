@@ -4,10 +4,15 @@ import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { AuthService } from '../../../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { Cart } from '../../../shared/models/cart/cart.model';
+import { MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,
+            MatDialogModule
+  ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
 })
@@ -15,10 +20,11 @@ export class ProductDetailComponent implements OnInit {
 
   selectedProduct: Product | null = null;
   productId: string | null = null;
+  showNotification: boolean = false;
   constructor(private productService: ProductService,
     private route: ActivatedRoute,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
 
@@ -41,13 +47,30 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(item: any) {
     const userId = this.authService.getUserId();
-    this.cartService.addToCart(item,userId).subscribe({
-      next: (response) => {
-        console.log('Item added to cart', response);
-      },
-      error: (err) => {
-        console.error("Failed to add item to cart", err)
-      }
-    });
+    if (this.selectedProduct) {
+      const cartItem: Cart = {
+        cartId: 0,
+        productId: this.selectedProduct.id,
+        productName: this.selectedProduct.name,
+        productPrice: this.selectedProduct.price,
+        image: this.selectedProduct.image || '',
+        size: this.selectedProduct.sizeId,
+        quantity: 1,
+        isWishlist: 0
+      };
+
+      this.cartService.addToCart(cartItem, userId).subscribe({
+        next: () => {
+          this.showNotification = true; // Show the notification
+          // Automatically hide notification after 3 seconds
+          setTimeout(() => {
+            this.showNotification = false;
+          }, 1000);
+        },
+        error: (err) => {
+          console.error("Failed to add item to cart", err);
+        }
+      });
+    }
   }
 }
