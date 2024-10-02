@@ -8,7 +8,7 @@ import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router'
 import { CategoryListComponent } from "../../../pages/homepage/category-list/category-list/category-list.component";
 import { SearchComponent } from "../../../pages/search/search/search.component";
 import { ProductService } from '../../../services/product.service';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../services/authService/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartService } from '../../../services/cart.service';

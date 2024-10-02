@@ -3,7 +3,7 @@ import { Product } from '../../../shared/models/product/product.model';
 import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../services/authService/auth.service';
 import { CommonModule } from '@angular/common';
 import { Cart } from '../../../shared/models/cart/cart.model';
 import { MatDialogModule } from '@angular/material/dialog';

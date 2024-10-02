@@ -28,14 +28,10 @@ export class LoginComponent {
 
   passwordVisible: boolean = false; 
   
-  constructor(private authService: AuthService, private router: Router) {}
-
   loginUser() {
     const formValue = this.formLogin.value;
     console.log(formValue);
-  
-    // Call the login API
-    this.http.post(this.baseApi + 'User/login', formValue, { responseType: 'json' })
+    this.authService.loginUser(formValue)
       .subscribe(
         (response: any) => {
           console.log('Response:', response);

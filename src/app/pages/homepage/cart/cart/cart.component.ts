@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../../services/cart.service';
 import { UserService } from '../../../../services/user.service';
 import { Cart } from '../../../../shared/models/cart/cart.model';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../services/authService/auth.service';
 
 @Component({
   selector: 'app-cart',
