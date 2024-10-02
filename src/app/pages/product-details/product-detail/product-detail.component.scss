@@ -17,7 +17,9 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: azure;
+    color: black;
+    border: 1px solid;
 }
     
 .B-section{
@@ -34,3 +36,22 @@ B.B-section-content{
 .spacer{
     height: 150px;
 }
+.notification {
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: gray;
+  color: white; 
+  padding: 15px 30px; 
+  border-radius: 10px; 
+  font-size: 18px;
+  z-index: 1000; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  }
+  .notification.ng-leave {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }

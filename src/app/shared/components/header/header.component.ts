@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartService } from '../../../services/cart.service';
+import { count } from 'console';
 
 
 @Component({
@@ -42,17 +43,26 @@ export class HeaderComponent {
   isMenuActive: boolean = false;
   cartItemCount: number = 0;
 
-  constructor(private router: Router, public authService: AuthService, private cartService: CartService) {
+  constructor(private router: Router,
+     public authService: AuthService,
+     private cartService: CartService,
+      private cdr: ChangeDetectorRef) {
     this.getCartItemCount();
+
+    this.cartService.cartItemCount$.subscribe((count) => {
+      this.cartItemCount = count;
+      this.cdr.detectChanges();
+    })
   }
   getCartItemCount() {
     const userId = this.authService.getUserId();
     this.cartService.getCartItems(userId).subscribe(items => {
-      this.cartItemCount = items.length; // Assuming items is an array
+      this.cartItemCount = items.length;
     });
   }
   logout() {
     this.authService.logout();
+    this.cartService.updateCartItemCount(0);
     this.router.navigate(['/']);
   }
   toggleMenu() {

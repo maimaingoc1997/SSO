@@ -1,18 +1,23 @@
 <div class="container-fluid product-detail-container">
     <div class="row">
         <div class="col-6 A-section">
-            <img class="product-image" src="https://image.hm.com/assets/hm/3b/dc/3bdc11267757e4355bf285c9def38ea8c90233d3.jpg?imwidth=1260" alt="">
+            <img class="product-image" src="{{selectedProduct?.image}}" alt="">
         </div>
         <div class="col-6 B-section">
             <div class="B-section-content">
                 <H1>{{selectedProduct?.name}}</H1>
-                <p>{{selectedProduct?.price}}</p>
+                <p>{{selectedProduct?.price | currency }}</p>
                 <div class="product-des">{{selectedProduct?.description}}</div>
                 <div class="spacer"></div>
                 <button (click)="addToCart(selectedProduct)">
                     ADD TO BAG
                 </button>
+
+               
             </div>
         </div>
     </div>
+    <div *ngIf="showNotification" class="notification">
+        {{selectedProduct?.name}} has been successfully added to your cart.
+      </div>
 </div>

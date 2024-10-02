@@ -23,4 +23,8 @@ export class CategoryService {
     console.log('Selecting category ID:', categoryId);
     this.selectedCategorySource.next(categoryId);
   }
+
+  getSelectedCategoryId(): number | null {
+    return this.selectedCategorySource.value; // Assuming selectedCategorySource is a BehaviorSubject
+  }
 }

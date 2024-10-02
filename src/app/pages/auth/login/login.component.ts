@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../../services/authService/auth.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ import { AuthService } from '../../../services/authService/auth.service';
 })
 @Injectable()
 export class LoginComponent {
+  constructor(private router: Router, private http: HttpClient, private auth: Auth,private cartService: CartService, private authService: AuthService) { }
+  private baseApi = 'https://localhost:7135/api/';
   formLogin = new FormGroup({
     email: new FormControl(),
     password: new FormControl(),
@@ -29,15 +32,33 @@ export class LoginComponent {
 
   loginUser() {
     const formValue = this.formLogin.value;
-    this.authService.loginUser(formValue).subscribe(
-      (response) => {
-        console.log('Response:', response);
-        this.router.navigate(['']);
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+    console.log(formValue);
+  
+    // Call the login API
+    this.http.post(this.baseApi + 'User/login', formValue, { responseType: 'json' })
+      .subscribe(
+        (response: any) => {
+          console.log('Response:', response);
+  
+          // Store the token in localStorage
+          localStorage.setItem('authToken', response.token);  // Ensure 'authToken' matches the key you're checking
+  
+          // Retrieve user information from the token using UserService
+          const userInfo = this.authService.getUserInfo();
+          console.log('Logged in User Info:', userInfo);
+
+          if (userInfo) {
+            this.cartService.getCartItems(userInfo.Id).subscribe((items) => {
+              this.cartService.updateCartItemCount(items.length); // Update the count immediately
+            });
+          }
+          // Redirect to home or another route
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
   }
 
   goToRegister() {

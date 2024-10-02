@@ -51,7 +51,7 @@ export class CartComponent {
 
   remove(item: any){
     const currentUserId = this.authService.getUserId();
-    this.cartService.Remove(item, currentUserId).subscribe({
+    this.cartService.remove(item, currentUserId).subscribe({
       next: (response) => {
         console.log('Item removed', response); 
         this.loadCartItems();

@@ -1,10 +1,15 @@
 <!-- main content area -->
 <main class="container-fluid m-0 p-0">
-        <app-header class="row h-80" *ngIf="showHeaderFooter"></app-header>
+        <!-- <app-header class="row h-80" *ngIf="showHeaderFooter"></app-header>
         <router-outlet  name="teaser"></router-outlet>
         <router-outlet name="product-list"></router-outlet>
         <router-outlet class="row"></router-outlet>
-        <app-footer class="row" *ngIf="showHeaderFooter"></app-footer>
+        <app-footer class="row" *ngIf="showHeaderFooter"></app-footer> -->
+        <app-header class="row h-80" ></app-header>
+        <router-outlet  name="teaser"></router-outlet>
+        <router-outlet name="product-list"></router-outlet>
+        <router-outlet class="row"></router-outlet>
+        <app-footer class="row"></app-footer>
 </main>
 
 <!-- end main content area -->
