@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { Auth, getAuth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { privateDecrypt } from 'crypto';
 import { Observable } from 'rxjs';
@@ -54,13 +54,39 @@ export class AuthService {
       console.error('Login error: ', error);
     }
   }
+  // async signUpWithGoogle(): Promise<any> {
+  //   const credential = GoogleAuthProvider.credentialFromResult(result);
+  //   try {
+  //     const result = await signInWithPopup(this.auth, provider);
+  //     return result.user;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
+
+  private get_auth = getAuth();
+  // This method handles Google sign-up and returns both user and token
   async signUpWithGoogle(): Promise<any> {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(this.auth, provider);
-      return result.user;
-    } catch (error) {
-      throw error;
+      const result = await signInWithPopup(this.get_auth, provider);
+
+      // Extract the credential and token from the result
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken; // Token to access Google API
+      const user = result.user; // Signed-in user info
+
+      // Return both token and user
+      return { user, token };
+    } catch (error:any) {
+      // Handle error if sign-up fails
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+
+      // Throw the error for the caller to handle
+      throw { errorCode, errorMessage, email, credential };
     }
   }
   isLoggedIn(): boolean {
@@ -83,4 +109,5 @@ export class AuthService {
       localStorage.removeItem('userId');
     }
   }
+  
 }

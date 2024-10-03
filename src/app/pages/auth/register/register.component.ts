@@ -15,13 +15,11 @@ import { AuthService } from '../../../services/authService/auth.service';
 })
 @Injectable()
 export class RegisterComponent {
-
   constructor(private authService: AuthService, private router: Router) {}
-  
+
   formRegister = new FormGroup({
-    
     email: new FormControl(),
-    confirm_email : new FormControl(),
+    confirm_email: new FormControl(),
     password: new FormControl(),
     confirm_password: new FormControl(),
   });
@@ -32,8 +30,14 @@ export class RegisterComponent {
   registerUser() {
     let formValue = this.formRegister.value;
     console.log(formValue);
-    if (formValue.password != null && formValue.password === formValue.confirm_password) {
-      if (formValue.email != null && formValue.email === formValue.confirm_email) {
+    if (
+      formValue.password != null &&
+      formValue.password === formValue.confirm_password
+    ) {
+      if (
+        formValue.email != null &&
+        formValue.email === formValue.confirm_email
+      ) {
         this.authService.registerUser(formValue).subscribe(
           (response) => {
             console.log('Response:', response);
@@ -44,20 +48,31 @@ export class RegisterComponent {
           }
         );
       } else {
-        console.warn('Email is null or confirm email not match')
+        console.warn('Email is null or confirm email not match');
       }
     } else {
       console.warn('Password is null or confirm password not match');
     }
   }
 
- async signUpWithGoogle() {
+  //  async signUpWithGoogle() {
+  //     try {
+  //       const user = await this.authService.signUpWithGoogle();
+  //       console.log('Đăng ký thành công:', user);
+  //       // Thực hiện các hành động sau khi đăng ký thành công
+  //     } catch (error) {
+  //       console.error('Lỗi đăng ký:', error);
+  //     }
+  //   }
+  async signUpWithGoogle() {
     try {
-      const user = await this.authService.signUpWithGoogle();
-      console.log('Đăng ký thành công:', user);
-      // Thực hiện các hành động sau khi đăng ký thành công
+      const { user, token } = await this.authService.signUpWithGoogle();
+      console.log('Sign-up successful:', user);
+      console.log('Access Token:', token);
+
+      // Perform additional actions after successful sign-up
     } catch (error) {
-      console.error('Lỗi đăng ký:', error);
+      console.error('Sign-up error:', error);
     }
   }
 }
